@@ -19,7 +19,7 @@ for i in range(2):
     dealerhand.append(dealcard())
 
 def handtotal(hand):
-    """gets value of the sum card"""
+    """gets value of the sum of cards"""
     values = []
     for i in hand:
         values.append(cards[i])
@@ -29,7 +29,7 @@ def handtotal(hand):
         values = [1 if x == 11 else x for x in values]
     return sum(values)
 
-def compare_totals(playertotal, dealertotal):
+def comparetotals(playertotal, dealertotal):
     """compares the player and user totals"""
     if playertotal == 0:
         return "You got BlackJack! You win!"
@@ -72,7 +72,7 @@ while 17 > dealertotal != 0:
     dealerhand.append(dealcard())
     dealertotal = handtotal(dealerhand)
 
-compare_totals(playertotal, dealertotal)
+comparetotals(playertotal, dealertotal)
 
 if playertotal == 0:
     print(f"Your cards: {playerhand}\nDealer's cards: {dealerhand}\nDealer's total: {dealertotal}")
@@ -81,4 +81,4 @@ elif dealertotal == 0:
 else:
     print(f"Your cards: {playerhand}\nDealer's cards: {dealerhand}\nYour total: {playertotal}\nDealer's total: {dealertotal}")
 
-print(compare_totals(playertotal, dealertotal))
+print(comparetotals(playertotal, dealertotal))
