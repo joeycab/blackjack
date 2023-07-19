@@ -19,11 +19,11 @@ for i in range(2):
     dealerhand.append(dealcard())
 
 def handtotal(hand):
-    """gets value of the sum of cards"""
+    """gets value of the sum card"""
     values = []
     for i in hand:
         values.append(cards[i])
-    if sum(values) == 21 and len(values) == 2:
+    if sum(values) == 21:
         return 0
     if sum(values) > 21:
         values = [1 if x == 11 else x for x in values]
@@ -52,13 +52,17 @@ def comparetotals(playertotal, dealertotal):
 
 gameover = False
 
+playerhandstr = ", ".join(playerhand)
+dealerhandstr = ", ".join(dealerhand)
+
 while not gameover:
     playertotal = handtotal(playerhand)
     dealertotal = handtotal(dealerhand)
 
-    print(f"Your cards: {playerhand}\nDealer's first card: {dealerhand[0]}")
+    print(f"Your cards: {playerhandstr}\nDealer's first card: {dealerhand[0]}")
     if playertotal == 0 or playertotal > 21:
         gameover = True
+        system("clear")
     else:
         another_card = input("Do you want another card? (Y/N)\n")
         if another_card.lower() == "y":
@@ -73,12 +77,11 @@ while 17 > dealertotal != 0:
     dealertotal = handtotal(dealerhand)
 
 comparetotals(playertotal, dealertotal)
-
 if playertotal == 0:
-    print(f"Your cards: {playerhand}\nDealer's cards: {dealerhand}\nDealer's total: {dealertotal}")
+    print(f"Your cards: {playerhandstr}\nDealer's cards: {dealerhandstr}\nDealer's total: {dealertotal}")
 elif dealertotal == 0:
-    print(f"Your cards: {playerhand}\nDealer's cards: {dealerhand}\nYour total: {playertotal}\nDealer's total: 21")
+    print(f"Your cards: {playerhandstr}\nDealer's cards: {dealerhandstr}\nYour total: {playertotal}\nDealer's total: 21")
 else:
-    print(f"Your cards: {playerhand}\nDealer's cards: {dealerhand}\nYour total: {playertotal}\nDealer's total: {dealertotal}")
+    print(f"Your cards: {playerhandstr}\nDealer's cards: {dealerhandstr}\nYour total: {playertotal}\nDealer's total: {dealertotal}")
 
 print(comparetotals(playertotal, dealertotal))
